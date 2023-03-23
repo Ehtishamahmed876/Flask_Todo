@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <style>
+       body {
+         
+        
+          margin: 5%;
+       }
+       .bo {
+        background-color:gray;
+        color: white;
+        
+       }
+    </style>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div class="bo">
+    <div class="for">
+    <h2>Add a Task</h2>
+    <form method="POST" action="{{ url_for('add') }}">
+      <label for="task_name">Task Name:</label>
+      <input type="text" name="task_name">
+      <button type="submit">Add</button>
+    </form>
+    </div>
+    <h1 >Todo List</h1>
+    <ul>
+      {% for task in tasks %}
+        <li>
+          <form method="POST" action="{{ url_for('update', id=task.id) }}">
+            {% if task.status %}
+              <input type="checkbox" name="status" value="done" checked>
+              <del>{{ task.task_name }}</del>
+            {% else %}
+              <input type="checkbox" name="status" value="done">
+              {{ task.task_name }}
+            {% endif %}
+            <button type="submit">Update</button>
+          </form>
+          <form method="POST" action="{{ url_for('delete', id=task.id) }}">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+  </body>
+</html>
