@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask
+instance/
+.env
+.flaskenv
+venv/
+
+# Editor
+.vscode/
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
